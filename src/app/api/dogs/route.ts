@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BASE = 'https://frontend-take-home-service.fetch.com/dogs';
+const UPSTREAM = 'https://frontend-take-home-service.fetch.com/dogs';
 
 export async function POST(req: NextRequest) {
-  const body = await req.text(); 
-  const upstream = await fetch(BASE, {
+  const body = await req.text(); // array of dog IDs
+  const upstream = await fetch(UPSTREAM, {
     method: 'POST',
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      cookie: req.headers.get('cookie') ?? '',
+    },
     body,
   });
 
