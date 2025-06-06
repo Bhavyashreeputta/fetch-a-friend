@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { pipe } from '@/utils/pipe';
 
 const UPSTREAM = 'https://frontend-take-home-service.fetch.com/dogs/match';
 
@@ -13,7 +14,5 @@ export async function POST(req: NextRequest) {
     body,
   });
 
-  const res = new NextResponse(upstream.body, { status: upstream.status });
-  upstream.headers.forEach((v, k) => res.headers.set(k, v));
-  return res;
+  return pipe(upstream);
 }

@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { pipe } from '@/utils/pipe';
 
 const BASE = 'https://frontend-take-home-service.fetch.com/dogs/search';
 
@@ -10,7 +11,5 @@ export async function GET(req: NextRequest) {
     },
   });
 
-  const res = new NextResponse(upstream.body, { status: upstream.status });
-  upstream.headers.forEach((v, k) => res.headers.set(k, v));
-  return res;
+  return pipe(upstream);
 }
