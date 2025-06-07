@@ -29,10 +29,10 @@ export default function SearchPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-6 px-4 pb-28 pt-6">
 
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        <BreedFilter selected={breeds} onChange={setBreeds} />
-        <SortDropdown value={sort} onChange={setSort} />
-      </div>
+    <div className="flex flex-col gap-4 md:flex-row md:items-end">
+    <BreedFilter selected={breeds} onChange={setBreeds} />
+    <SortDropdown value={sort} onChange={setSort} />
+    </div>
 
 
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

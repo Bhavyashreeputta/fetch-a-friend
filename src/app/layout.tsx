@@ -13,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-white dark:bg-slate-900">
+      <body 
+        className="min-h-screen bg-white dark:bg-slate-900"
+        suppressHydrationWarning={true}
+      >
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
