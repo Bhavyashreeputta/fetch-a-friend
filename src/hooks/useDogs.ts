@@ -1,7 +1,11 @@
 import { useInfiniteQuery, type InfiniteData } from '@tanstack/react-query';
 import { api } from '@/utils/fetcher';
 import type { Dog } from '@/types/dog';
-import type { DogsPage } from '@/types/search';
+
+export interface DogsPage {
+  dogs: Dog[];
+  next: string | null;
+}
 
 interface Params {
   breeds?: string[];
@@ -10,29 +14,34 @@ interface Params {
   ageMax?: number;
 }
 
-
 export const useDogs = (params: Params) =>
-  useInfiniteQuery<
-    DogsPage,                     
-    Error,                       
-    InfiniteData<DogsPage>,     
-    ['dogs', Params]              
-  >({
-    queryKey: ['dogs', params],
-    initialPageParam: 0,
+  useInfiniteQuery<DogsPage, Error, InfiniteData<DogsPage>, ['dogs', Params]>(
+    {
+      queryKey: ['dogs', params],
+      initialPageParam: '',
 
-    queryFn: async ({ pageParam = 0 }): Promise<DogsPage> => {
-      const { data: search } = await api.get('/dogs/search', {
-        params: { ...params, size: 25, from: pageParam },
-      });
+      queryFn: async ({ pageParam }): Promise<DogsPage> => {
+        let searchRes;
 
-      const { data: dogs } = await api.post<Dog[]>('/dogs', search.resultIds);
+        if (pageParam === '') {
+          searchRes = await api.get('/dogs/search', {
+            params: { ...params, size: 25 },
+          });
+        } else {
+          searchRes = await api.get(`/dogs/search?${pageParam}`);
+        }
 
-      return {
-        dogs,
-        next: search.next ?? null, 
-      };
+        const { data: dogs } = await api.post<Dog[]>(
+          '/dogs',
+          searchRes.data.resultIds,
+        );
+
+        return {
+          dogs,
+          next: searchRes.data.next ?? null,
+        };
+      },
+
+      getNextPageParam: (lastPage) => lastPage.next ?? undefined,
     },
-
-    getNextPageParam: (lastPage) => lastPage.next ?? undefined,
-  });
+  );
