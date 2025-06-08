@@ -156,7 +156,7 @@ export default function MatchPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-gray-600 text-lg sm:text-xl max-w-md mx-auto"
+            className="text-gray-600 dark:text-slate-400 text-lg sm:text-xl max-w-md mx-auto"
           >
             Based on your preferences, we found your ideal companion
           </motion.p>

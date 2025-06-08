@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fetch Dogs – Find a Shelter Pup a New Home 🐾
 
-## Getting Started
+Welcome! This little web app lets you browse real shelter-dog data, mark your
+favourite pups, and get matched with the perfect companion. It was created as
+a front-end take-home for Fetch, but anyone can run it locally in just a few
+minutes.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Quick tour
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Screen            | What you can do                                                      |
+| ----------------- | -------------------------------------------------------------------- |
+| **Landing**       | Animated hero, floating paw prints, “Start Browsing” button.         |
+| **Login**         | Type a name + email (no password needed) and you’re in.              |
+| **Search**        | Filter by breed, age range, city/ZIP, sort results, infinite scroll. |
+| **Favourites**    | Click "heart" to add dogs; a tray slides up to show your list.       |
+| **Match**         | Click **Find my match** → confetti 🎉 and your best-fit dog card.    |
+| **Logout**        | One click ends your session and returns you to login.                |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Everything is responsive (phone to desktop) and supports light & dark mode.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Tech stack 
 
-To learn more about Next.js, take a look at the following resources:
+| What                | Why it’s here                                                   |
+| ------------------- | --------------------------------------------------------------- |
+| **Next.js 14**      | Fast pages plus built-in “API routes” so we didn’t need a backend server. |
+| **React**           | Breaks the UI into reusable components.                         |
+| **Tailwind CSS**    | Utility classes for quick, consistent styling.                  |
+| **Framer Motion**   | Smooth fades, hover zooms, and button animations.               |
+| **React Query**     | Caches API calls so scrolling feels instant.                    |
+| **Canvas-Confetti** | The fun fireworks on the match screen.                          |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Run it on your computer (≈ 5 min)
 
-## Deploy on Vercel
+1. **Install Node 18 +**  
+   Windows / macOS downloads: <https://nodejs.org>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Clone the repository**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   git clone https://github.com/<your-username>/fetch-dogs.git
+   cd fetch-dogs
+   npm install
+   npm run dev 
