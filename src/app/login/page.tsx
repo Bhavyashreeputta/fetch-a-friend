@@ -54,7 +54,7 @@ export default function LoginPage() {
         className="relative z-10 w-full max-w-md rounded-2xl bg-white/80 p-8 shadow-xl backdrop-blur-md dark:bg-slate-800/80"
       >
         <h1 className="mb-6 text-center text-3xl font-extrabold text-sky-700 dark:text-sky-300">
-          Login to Fetch 🐾
+          Login to PawMatch 🐾
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
